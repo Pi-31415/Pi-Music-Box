@@ -8,28 +8,7 @@ function randomIntFromInterval(min, max) { // min and max included
 	return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-function setup() {
-	canvas = createCanvas(windowWidth, windowHeight);
-	canvas.position(0, 0);
-	canvas.style('z-index', '-1');
-	canvas.style('position', 'fixed');
-	wave = new p5.Oscillator();
-	wave.setType('triangle');
-	wave.amp(1);
-	background(colors[randomIntFromInterval(0, colors.length - 1)]);
-	//load text
-}
-
-function draw() {
-	fill(50, 50, 50);
-	textSize(32);
-	text('Music Box', windowWidth/2, windowHeight/2);
-	textSize(24);
-	text('By Pi', windowWidth/2, (windowHeight/2)+30);
-	text('Press to play', windowWidth/2, (windowHeight/2)+60);
-}
-
-function mousePressed() {
+function playmusic() {
 	//change background color every time the user clicks
 	background(colors[randomIntFromInterval(0, colors.length - 1)]);
 	//locking between two extreme notes
@@ -55,6 +34,36 @@ function mousePressed() {
 			index++;
 		}
 	} else {}
+}
+
+function setup() {
+	canvas = createCanvas(windowWidth, windowHeight);
+	canvas.position(0, 0);
+	canvas.style('z-index', '-1');
+	canvas.style('position', 'fixed');
+	wave = new p5.Oscillator();
+	wave.setType('triangle');
+	wave.amp(1);
+	background(colors[randomIntFromInterval(0, colors.length - 1)]);
+	//load text
+}
+
+function draw() {
+	fill(50, 50, 50);
+	textSize(32);
+	text('Music Box', windowWidth / 2, windowHeight / 2);
+	textSize(24);
+	text('By Pi', windowWidth / 2, (windowHeight / 2) + 30);
+	text('Press to play', windowWidth / 2, (windowHeight / 2) + 60);
+
+	if (keyIsDown(32)) {
+		playmusic();
+	}
+
+}
+
+function mousePressed() {
+	playmusic();
 }
 
 function mouseReleased() {
