@@ -56,10 +56,6 @@ function draw() {
 	text('By Pi', windowWidth / 2, (windowHeight / 2) + 30);
 	text('Press to play', windowWidth / 2, (windowHeight / 2) + 60);
 
-	if (keyIsDown(32)) {
-		playmusic();
-	}
-
 }
 
 function mousePressed() {
